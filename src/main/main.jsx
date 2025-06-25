@@ -4,10 +4,14 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 import Home from "../pages/home/home.jsx";
 import CountryDetail from "../components/country_detail.jsx";
 
-// Workaround: use createRoutesFromElements and pass routes to createBrowserRouter
+// Create a custom history with basename
+const customHistory = createBrowserHistory({ basename: "/REST-Countries-API" });
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -16,7 +20,8 @@ const router = createBrowserRouter(
     </>
   ),
   {
-    basename: "/REST-Countries-API", // 👈 Important for GitHub Pages
+    // 👇 Plug in custom history
+    history: customHistory,
   }
 );
 
