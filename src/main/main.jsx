@@ -1,22 +1,23 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import "../resetStyle.css";
-import "../variables.css";
-
-import App from "../App/App.jsx";
+// router.jsx
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 import Home from "../pages/home/home.jsx";
 import CountryDetail from "../components/country_detail.jsx";
-const router = createBrowserRouter([
+
+// Workaround: use createRoutesFromElements and pass routes to createBrowserRouter
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Home />} />
+      <Route path="/country/:name" element={<CountryDetail />} />
+    </>
+  ),
   {
-    path: "/",
-    element: <Home></Home>,
-  },
-  {
-    path: "/country/:name",
-    element: <CountryDetail />,
-  },
-]);
-createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+    basename: "/REST-Countries-API", // 👈 Important for GitHub Pages
+  }
 );
+
+export default router;
