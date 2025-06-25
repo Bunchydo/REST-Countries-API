@@ -1,0 +1,9 @@
+:root {
+    --color-dark-mode-element-bg: #2b3945;
+    --color-dark-mode-background: #202c37;
+    --color-dark-mode-text: #ffffff;
+
+    --color-light-mode-text: #111517;
+    --color-light-mode-input-text: #7c7c7c;
+    --color-light-mode-background: #ffffffe5;
+    --color-light-mode-element-bg: #ffffff; }
